@@ -1,25 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.Globalization;
 
 namespace Lista_Funcionarios
 {
-    class funcionarios
+
+    class Funcionarios
     {
 
-      public   int Id { get; set; }
-      public  string Name { get; set; }
-      public  int Salario { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double Salary { get; private set; }
 
-        public funcionarios (int id, string name, int salario)
+        public Funcionarios(int id, string name, double salary)
         {
             Id = id;
             Name = name;
-            Salario = salario
+            Salary = salary;
         }
- 
-    
+
+        public void IncreaseSalary(double percentage)
+        {
+            Salary += Salary * percentage / 100.0;
+        }
+
+        public override string ToString()
+        {
+            return Id
+                + ", "
+                + Name
+                + ", "
+                + Salary.ToString("F2", CultureInfo.InvariantCulture);
+        }
     }
 }
